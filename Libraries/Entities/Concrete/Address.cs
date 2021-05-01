@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
-{
-    /// <summary>
-    /// Cariler, bireysel/kurumsal cari kart id'si ile kara listeye düşer
-    /// </summary>
-    public class BlackList : IEntity
+{   /// <summary>
+    /// Value değeri adresi verir.
+    /// </summary> 
+    public class Address : IEntity
     {
         public Guid Id { get; set; }
         public Guid CurrentCardId { get; set; }
+        public string Title { get; set; }
+        public string Value { get; set; }
     }
 }
