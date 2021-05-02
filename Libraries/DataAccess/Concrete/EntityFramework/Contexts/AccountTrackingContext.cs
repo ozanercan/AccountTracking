@@ -21,5 +21,6 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<CurrencyUnit> CurrencyUnits { get; set; }
+        public DbSet<CorporateCurrentCard> CorporateCurrentCards { get; set; }
     }
 }

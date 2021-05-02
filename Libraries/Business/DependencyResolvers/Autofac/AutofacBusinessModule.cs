@@ -23,6 +23,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfCurrencyUnitDal>().As<ICurrencyUnitDal>();
             builder.RegisterType<CurrencyUnitManager>().As<ICurrencyUnitService>();
 
+            builder.RegisterType<EfCorporateCurrentCardDal>().As<ICorporateCurrentCardDal>();
+            builder.RegisterType<CorporateCurrentCardManager>().As<ICorporateCurrentCardService>();
 
             builder.RegisterAutoMapper(Assembly.GetExecutingAssembly());
 
