@@ -12,7 +12,7 @@ namespace Entities.Concrete
     {
         public Guid Id { get; set; }
         public Guid CorporateCurrentCardId { get; set; }
-        public int CurrentCode { get; set; }
+        public string CurrentCode { get; set; }
         public string TaxNumber { get; set; }
         public string CompanyName { get; set; }
         public string TaxAdministration { get; set; }

@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
-{   
+{
     /// <summary>
-    /// Email adresleri için kullanılır.
+    /// Yabancı Uyruklu Cari Kart
     /// </summary>
-    public class Email : IEntity
+    public class ForeignIndividualCurrentCard : IEntity
     {
         public Guid Id { get; set; }
-        public Guid CurrentCardId { get; set; }
-        public string Title { get; set; }
-        public string Value { get; set; }
+        public Guid IndividualCurrentCardId { get; set; }
+        public string IdentityNumber { get; set; }
     }
 }
