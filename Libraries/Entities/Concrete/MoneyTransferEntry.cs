@@ -13,6 +13,7 @@ namespace Entities.Concrete
         public Guid UserId { get; set; }
         public Guid PaymentStatuId { get; set; }
         public Guid CurrencyUnitId { get; set; }
+        public string SecondaryIdentity { get; set; }
         public decimal Amount { get; set; }
         public string Description { get; set; }
         public DateTime EstimatedReceivingMoneyDateTime { get; set; }

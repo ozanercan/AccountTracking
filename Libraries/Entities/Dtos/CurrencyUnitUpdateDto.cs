@@ -1,12 +1,12 @@
 ﻿using Core.Entities.Abstract;
 using System;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
     /// <summary>
-    /// Para Birimi için kullanılır.
+    /// Para Birimi güncellemek için kullanılır.
     /// </summary>
-    public class CurrencyUnit : IEntity
+    public class CurrencyUnitUpdateDto : IDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

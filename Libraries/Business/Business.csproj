@@ -15,9 +15,4 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validators\FluentValidation\Dto\" />
-    <Folder Include="Validators\FluentValidation\Entity\" />
-  </ItemGroup>
-
 </Project>

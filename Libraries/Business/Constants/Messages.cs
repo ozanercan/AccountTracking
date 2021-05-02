@@ -22,5 +22,17 @@ namespace Business.Constants
         public static string UserBrought = "Kullanıcı getirildi.";
         public static string OperationClaimsNotFoundForUser = "Kullanıcının yetkileri bulunamadı.";
         public static string OperationClaimsListedForUser = "Kullanıcının yetkileri listelendi.";
+        internal static string CurrencyUnitNotAdded = "Para Birimi eklenemedi.";
+        internal static string CurrencyUnitAdded = "Para Birimi başarıyla eklendi.";
+        internal static string CurrencyUnitNotFoundById = "Para Birimi Id değerine göre bulunamadı.";
+        internal static string CurrencyUnitUpdated = "Para Birimi güncellenemedi.";
+        internal static string CurrencyUnitNotUpdate = "Para Birimi başarıyla güncellendi.";
+        internal static string CurrencyUnitFoundById = "Para Birimi Id değerine göre bulundu.";
+        internal static string CurrencyUnitNotDeleted = "Para Birimi silinemedi.";
+        internal static string CurrencyUnitDeleted = "Para Birimi başarıyla silindi.";
+        internal static string CurrenciesUnitNotFoundInDatabase = "Para Birimleri, veritabanında bulunamadı.";
+        internal static string CurrenciesListed = "Para Birimleri listelendi.";
+        internal static string CurrencyNameAlreadyRegistered = "Para Birimi Adı zaten kayıtlı.";
+        internal static string CurrencyNameCanUsed = "Para Birimi Adı kullanılabilir.";
     }
 }

@@ -11,6 +11,7 @@ namespace Entities.Concrete
         public Guid Id { get; set; }
         public Guid InstallmentStatuId { get; set; }
         public Guid MoneyTransferEntryId { get; set; }
+        public string SecondaryIdentity { get; set; }
         public int Which { get; set; }
         public decimal Amount { get; set; }
         public string Description { get; set; }

@@ -92,5 +92,13 @@ namespace Core.DataAccess.RepositoryPattern
                     : await context.Set<TEntity>().AsNoTracking().Where(exp).ToListAsync();
             }
         }
+
+        public async Task<bool> IsExistsAsync(Expression<Func<TEntity, bool>> exp)
+        {
+            using (var context = new TContext())
+            {
+                return await context.Set<TEntity>().AnyAsync(exp);
+            }
+        }
     }
 }

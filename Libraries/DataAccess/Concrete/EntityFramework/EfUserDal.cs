@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EntityRepositoryBase<User, ResCaContext>, IUserDal
+    public class EfUserDal : EntityRepositoryBase<User, AccountTrackingContext>, IUserDal
     {
         public async Task<List<OperationClaim>> GetClaimsAsync(User user)
         {
-            using (var context = new ResCaContext())
+            using (var context = new AccountTrackingContext())
             {
                 var result = from operationClaim in context.OperationClaims
                              join userOperationClaim in context.UserOperationClaims

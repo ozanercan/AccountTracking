@@ -9,6 +9,9 @@ namespace Entities.Concrete
     public class BlackList : IEntity
     {
         public int Id { get; set; }
+        public Guid UserId { get; set; }
         public int CurrentCardId { get; set; }
+        public string Description { get; set; }
+        public DateTime RegisterDateTime { get; set; }
     }
 }

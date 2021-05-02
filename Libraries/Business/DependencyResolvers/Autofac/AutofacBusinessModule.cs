@@ -20,6 +20,10 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<AuthManager>().As<IAuthService>();
 
+            builder.RegisterType<EfCurrencyUnitDal>().As<ICurrencyUnitDal>();
+            builder.RegisterType<CurrencyUnitManager>().As<ICurrencyUnitService>();
+
+
             builder.RegisterAutoMapper(Assembly.GetExecutingAssembly());
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

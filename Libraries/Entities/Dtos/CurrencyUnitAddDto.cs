@@ -1,14 +1,12 @@
 ﻿using Core.Entities.Abstract;
-using System;
 
-namespace Entities.Concrete
+namespace Entities.Dtos
 {
     /// <summary>
-    /// Para Birimi için kullanılır.
+    /// Para Birimi eklemek için kullanılır.
     /// </summary>
-    public class CurrencyUnit : IEntity
+    public class CurrencyUnitAddDto : IDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string ShortName { get; set; }
         public string Symbol { get; set; }
