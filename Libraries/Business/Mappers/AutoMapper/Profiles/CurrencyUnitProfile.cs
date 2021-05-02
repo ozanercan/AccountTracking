@@ -10,6 +10,18 @@ namespace Business.Mappers.AutoMapper.Profiles
         {
             CreateMap<CurrencyUnitAddDto, CurrencyUnit>();
             CreateMap<CurrencyUnitUpdateDto, CurrencyUnit>();
+
+            CreateMap<CorporateCurrentCardAddDto, CorporateCurrentCard>();
+            CreateMap<CorporateCurrentCardUpdateDto, CorporateCurrentCard>();
+
+            CreateMap<IndividualCurrentCardAddDto, IndividualCurrentCard>();
+            CreateMap<IndividualCurrentCardUpdateDto, IndividualCurrentCard>();
+
+            CreateMap<LocalIndividualCurrentCardAddDto, LocalIndividualCurrentCard>();
+            CreateMap<LocalIndividualCurrentCardUpdateDto, LocalIndividualCurrentCard>();
+
+            CreateMap<ForeignIndividualCurrentCardAddDto, ForeignIndividualCurrentCard>();
+            CreateMap<ForeignIndividualCurrentCardUpdateDto, ForeignIndividualCurrentCard>();            
         }
     }
 }
