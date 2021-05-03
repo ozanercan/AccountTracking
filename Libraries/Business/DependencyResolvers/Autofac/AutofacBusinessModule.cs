@@ -27,13 +27,16 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CorporateCurrentCardManager>().As<ICorporateCurrentCardService>();
 
             builder.RegisterType<EfIndividualCurrentCardDal>().As<IIndividualCurrentCardDal>();
-            builder.RegisterType<IndividualCurrentCardManager>().As<ILocalIndividualCurrentCardService>();
+            builder.RegisterType<IndividualCurrentCardManager>().As<IIndividualCurrentCardService>();
 
             builder.RegisterType<EfForeignIndividualCurrentCardDal>().As<IForeignIndividualCurrentCardDal>();
             builder.RegisterType<ForeignIndividualCurrentCardManager>().As<IForeignIndividualCurrentCardService>();
 
             builder.RegisterType<EfLocalIndividualCurrentCardDal>().As<ILocalIndividualCurrentCardDal>();
             builder.RegisterType<LocalIndividualCurrentCardManager>().As<ILocalIndividualCurrentCardService>();
+
+            builder.RegisterType<EfCurrentCardDal>().As<ICurrentCardDal>();
+            builder.RegisterType<CurrentCardManager>().As<ICurrentCardService>();
 
             builder.RegisterAutoMapper(Assembly.GetExecutingAssembly());
 

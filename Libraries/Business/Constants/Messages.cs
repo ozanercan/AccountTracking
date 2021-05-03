@@ -81,5 +81,16 @@ namespace Business.Constants
         public static string LocalIndividualCurrentCardFoundById = "Bireysel cari kart getirildi.";
         public static string LocalIndividualCurrentCardNotUpdated = "Breysel cari kart güncellenemedi.";
         public static string LocalIndividualCurrentCardUpdated = "Bireysel cari kart güncellendi.";
+
+        public static string CurrentCardNotAdded = "Cari kart eklenemedi.";
+        public static string CurrentCardAdded = "Cari kart eklendi.";
+        public static string CurrentCardNotDeleted = "Cari kart silinemedi.";
+        public static string CurrentCardDeleted = "Cari kart silindi.";
+        public static string CurrentCardsNotListed = "Cari kartlar listelenemedi";
+        public static string CurrentCardsListed = "Cari kartlar listelendi";
+        public static string CurrentCardNotFoundById = "Cari kart bulunamadı.";
+        public static string CurrentCardFoundById = "Cari kart getirildi.";
+        public static string CurrentCardNotUpdated = "Cari kart güncellenemedi.";
+        public static string CurrentCardUpdated = "Cari kart güncellendi.";
     }
 }
