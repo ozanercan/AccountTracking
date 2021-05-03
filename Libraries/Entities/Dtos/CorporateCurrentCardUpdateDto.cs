@@ -1,14 +1,15 @@
 ﻿using Core.Entities.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Dtos
 {
+    /// <summary>
+    /// Kurumsal cari kart güncellemek için kullanılır.
+    /// </summary>
     public class CorporateCurrentCardUpdateDto : IDto
     {
         public Guid Id { get; set; }
-        public Guid CorporateCurrentCardId { get; set; }
+        public Guid CurrentCardId { get; set; }
         public string CurrentCode { get; set; }
         public string TaxNumber { get; set; }
         public string CompanyName { get; set; }

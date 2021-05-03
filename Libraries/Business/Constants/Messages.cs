@@ -45,5 +45,41 @@ namespace Business.Constants
         public static string CorporateCurrentCardNotDeleted = "Kurumsal cari silinemedi.";
         public static string CorporateCurrentCardDeleted = "Kurumsal cari başarıyla silindi.";
         public static string CorporateCurrentCardNotFoundById = "Kurumsal cari bulunamadı.";
+        public static string CorporateCurrentCardFoundById = "Kurumsal cari getirildi.";
+        public static string CorporateCurrentCardsListed = "Kurumsal cariler listlendi.";
+        public static string CorporateCurrentCardsNotListed = "Kurumsal cariler listelenemedi.";
+
+        public static string IndividualCurrentCardNotAdded = "Bireysel eklenemedi.";
+        public static string IndividualCurrentCardAdded = "Bireysel eklendi.";
+        public static string IndividualCurrentCardNotDeleted = "Bireysel silinemedi.";
+        public static string IndividualCurrentCardDeleted = "Bireysel silindi.";
+        public static string IndividualCurrentCardsNotListed = "Bireyseller listelenemedi";
+        public static string IndividualCurrentCardsListed = "Bireyseller listelendi";
+        public static string IndividualCurrentCardNotFoundById = "Bireysel bulunamadı.";
+        public static string IndividualCurrentCardFoundById = "Bireysel getirildi.";
+        public static string IndividualCurrentCardNotUpdated = "Bireysel güncellenemedi.";
+        public static string IndividualCurrentCardUpdated = "Bireysel güncellendi.";
+
+        public static string ForeignIndividualCurrentCardNotAdded = "Yabancı bireysel cari kart eklenemedi.";
+        public static string ForeignIndividualCurrentCardAdded = "Yabancı bireysel cari kart eklendi.";
+        public static string ForeignIndividualCurrentCardNotDeleted = "Yabancı bireysel cari kart silinemedi.";
+        public static string ForeignIndividualCurrentCardDeleted = "Yabancı bireysel cari kart silindi.";
+        public static string ForeignIndividualCurrentCardsNotListed = "Yabancı bireysel cari kartlar listelenemedi";
+        public static string ForeignIndividualCurrentCardsListed = "Yabancı bireysel cari kartlar listelendi";
+        public static string ForeignIndividualCurrentCardNotFoundById = "Yabancı bireysel cari kart bulunamadı.";
+        public static string ForeignIndividualCurrentCardFoundById = "Yabancı bireysel cari kart getirildi.";
+        public static string ForeignIndividualCurrentCardNotUpdated = "Yabancı bireysel cari kart güncellenemedi.";
+        public static string ForeignIndividualCurrentCardUpdated = "Yabancı bireysel cari kart güncellendi.";
+
+        public static string LocalIndividualCurrentCardNotAdded = "Bireysel cari kart eklenemedi.";
+        public static string LocalIndividualCurrentCardAdded = "Bireysel cari kart eklendi.";
+        public static string LocalIndividualCurrentCardNotDeleted = "Bireysel cari kart silinemedi.";
+        public static string LocalIndividualCurrentCardDeleted = "Bireysel cari kart silindi.";
+        public static string LocalIndividualCurrentCardsNotListed = "Bireysel cari kartlar listelenemedi";
+        public static string LocalIndividualCurrentCardsListed = "Bireysel cari kartlar listelendi";
+        public static string LocalIndividualCurrentCardNotFoundById = "Bireysel cari kart bulunamadı.";
+        public static string LocalIndividualCurrentCardFoundById = "Bireysel cari kart getirildi.";
+        public static string LocalIndividualCurrentCardNotUpdated = "Breysel cari kart güncellenemedi.";
+        public static string LocalIndividualCurrentCardUpdated = "Bireysel cari kart güncellendi.";
     }
 }

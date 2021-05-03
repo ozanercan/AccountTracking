@@ -14,7 +14,7 @@ namespace Business.Validators
             RuleFor(p => p.CompanyName).MinimumLength(2);
             RuleFor(p => p.CompanyName).MaximumLength(50);
 
-            RuleFor(p => p.CorporateCurrentCardId).NotEmpty();
+            RuleFor(p => p.CurrentCardId).NotEmpty();
 
             RuleFor(p => p.CurrentCode).NotEmpty();
             RuleFor(p => p.CurrentCode).MinimumLength(15);

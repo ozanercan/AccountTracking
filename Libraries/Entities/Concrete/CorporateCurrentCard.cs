@@ -1,7 +1,5 @@
 ﻿using Core.Entities.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Entities.Concrete
 {
@@ -11,7 +9,7 @@ namespace Entities.Concrete
     public class CorporateCurrentCard : IEntity
     {
         public Guid Id { get; set; }
-        public Guid CorporateCurrentCardId { get; set; }
+        public Guid CurrentCardId { get; set; }
         public string CurrentCode { get; set; }
         public string TaxNumber { get; set; }
         public string CompanyName { get; set; }

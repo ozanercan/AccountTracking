@@ -22,5 +22,8 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<CurrencyUnit> CurrencyUnits { get; set; }
         public DbSet<CorporateCurrentCard> CorporateCurrentCards { get; set; }
+        public DbSet<IndividualCurrentCard> IndividualCurrentCards { get; set; }
+        public DbSet<ForeignIndividualCurrentCard> ForeignIndividualCurrentCards { get; set; }
+        public DbSet<LocalIndividualCurrentCard> LocalIndividualCurrentCards { get; set; }
     }
 }

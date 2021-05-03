@@ -59,9 +59,9 @@ namespace Business.Concrete
             var values = await _corporateCurrentCardDal.GetAllNoTrackingAsync();
 
             if (values.Count == 0)
-                return new ErrorDataResult<List<CorporateCurrentCard>>(null, Messages.CurrenciesUnitNotFoundInDatabase);
+                return new ErrorDataResult<List<CorporateCurrentCard>>(null, Messages.CorporateCurrentCardsNotListed);
 
-            return new SuccessDataResult<List<CorporateCurrentCard>>(values, Messages.CurrenciesListed);
+            return new SuccessDataResult<List<CorporateCurrentCard>>(values, Messages.CorporateCurrentCardsListed);
         }
 
         public async Task<IDataResult<CorporateCurrentCard>> GetByIdAsync(Guid id)

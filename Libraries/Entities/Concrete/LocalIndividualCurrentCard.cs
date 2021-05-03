@@ -11,6 +11,7 @@ namespace Entities.Concrete
     public class LocalIndividualCurrentCard : IEntity
     {
         public Guid Id { get; set; }
-        public int IdentityNumber { get; set; }
+        public Guid IndividualCurrentCardId { get; set; }
+        public string IdentityNumber { get; set; }
     }
 }
