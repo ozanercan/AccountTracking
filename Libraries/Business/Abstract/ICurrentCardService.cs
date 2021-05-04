@@ -23,7 +23,7 @@ namespace Business.Abstract
         /// <summary>
         /// Cari kart oluşturur.
         /// </summary>
-        public Task<IResult> AddAsync(CurrentCardAddDto currentCardAddDto);
+        public Task<IDataResult<CurrentCard>> AddAsync(CurrentCardAddDto currentCardAddDto);
 
         /// <summary>
         /// Cari kart siler.

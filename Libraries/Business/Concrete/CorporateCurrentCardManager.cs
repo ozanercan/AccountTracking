@@ -26,16 +26,16 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CorporateCurrentCardAddDtoValidator))]
-        public async Task<IResult> AddAsync(CorporateCurrentCardAddDto corporateCurrentCardAddDto)
+        public async Task<IDataResult<CorporateCurrentCard>> AddAsync(CorporateCurrentCardAddDto corporateCurrentCardAddDto)
         {
             var mappedEntity = _mapper.Map<CorporateCurrentCard>(corporateCurrentCardAddDto);
 
             var result = await _corporateCurrentCardDal.AddAsync(mappedEntity);
 
             if (!result)
-                return new ErrorResult(Messages.CorporateCurrentCardNotAdded);
+                return new ErrorDataResult<CorporateCurrentCard>(null, Messages.CorporateCurrentCardNotAdded);
 
-            return new SuccessResult(Messages.CorporateCurrentCardAdded);
+            return new SuccessDataResult<CorporateCurrentCard>(mappedEntity, Messages.CorporateCurrentCardAdded);
         }
 
         [ValidationAspect(typeof(CorporateCurrentCardDeleteDtoValidator))]

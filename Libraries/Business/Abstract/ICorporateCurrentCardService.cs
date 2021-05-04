@@ -23,7 +23,7 @@ namespace Business.Abstract
         /// <summary>
         /// Kurumsal cari oluşturur.
         /// </summary>
-        public Task<IResult> AddAsync(CorporateCurrentCardAddDto corporateCurrentCardAddDto);
+        public Task<IDataResult<CorporateCurrentCard>> AddAsync(CorporateCurrentCardAddDto corporateCurrentCardAddDto);
 
         /// <summary>
         /// Kurumsal cari siler.
