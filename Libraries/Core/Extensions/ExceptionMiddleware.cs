@@ -37,6 +37,7 @@ namespace Core.Extensions
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             string message = "Internal Server Error";
+
             if (e is ValidationException validException)
             {
                 return httpContext.Response.WriteAsync(new ValidationErrorDetails
@@ -45,6 +46,11 @@ namespace Core.Extensions
                     Message = "Model Doğrulama Hatası",
                     ValidationErrors = validException.Errors.Select(p => p.ErrorMessage).ToList()
                 }.ToString());
+            }
+            else if (e is UnauthorizedAccessException accessException)
+            {
+                message = accessException.Message;
+                httpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             }
 
 

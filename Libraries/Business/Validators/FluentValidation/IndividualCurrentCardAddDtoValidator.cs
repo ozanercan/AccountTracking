@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Validators
+namespace Business.Validators.FluentValidation
 {
     public class IndividualCurrentCardAddDtoValidator : AbstractValidator<IndividualCurrentCardAddDto>
     {

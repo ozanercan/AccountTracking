@@ -4,21 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Validators
+namespace Business.Validators.FluentValidation
 {
     public class CorporateCurrentCardAddDtoValidator : AbstractValidator<CorporateCurrentCardAddDto>
     {
         public CorporateCurrentCardAddDtoValidator()
         {
-            RuleFor(p => p.CompanyName).NotEmpty();
-            RuleFor(p => p.CompanyName).MinimumLength(2);
-            RuleFor(p => p.CompanyName).MaximumLength(50);
+            RuleFor(p => p.Name).NotEmpty();
+            RuleFor(p => p.Name).MinimumLength(2);
+            RuleFor(p => p.Name).MaximumLength(50);
 
             RuleFor(p => p.CurrentCardId).NotEmpty();
-
-            RuleFor(p => p.CurrentCode).NotEmpty();
-            RuleFor(p => p.CurrentCode).MinimumLength(15);
-            RuleFor(p => p.CurrentCode).MaximumLength(15);
 
             RuleFor(p => p.TaxNumber).NotEmpty();
             RuleFor(p => p.TaxNumber).MinimumLength(10);

@@ -1,12 +1,14 @@
 ﻿using Entities.Dtos;
 using FluentValidation;
 
-namespace Business.Validators
+namespace Business.Validators.FluentValidation
 {
-    public class CurrencyUnitAddDtoValidator : AbstractValidator<CurrencyUnitAddDto>
+    public class CurrencyUnitUpdateDtoValidator : AbstractValidator<CurrencyUnitUpdateDto>
     {
-        public CurrencyUnitAddDtoValidator()
+        public CurrencyUnitUpdateDtoValidator()
         {
+            RuleFor(p => p.Id).NotEmpty();
+
             RuleFor(p => p.Name).NotEmpty();
             RuleFor(p => p.Name).MinimumLength(2);
             RuleFor(p => p.Name).MaximumLength(50);

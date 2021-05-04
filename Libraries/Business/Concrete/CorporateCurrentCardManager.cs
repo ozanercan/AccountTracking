@@ -2,6 +2,7 @@
 using Business.Abstract;
 using Business.Constants;
 using Business.Validators;
+using Business.Validators.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;

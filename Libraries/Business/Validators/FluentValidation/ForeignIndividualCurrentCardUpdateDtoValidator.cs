@@ -4,18 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Validators
+namespace Business.Validators.FluentValidation
 {
-    public class ForeignIndividualCurrentCardAddDtoValidator : AbstractValidator<ForeignIndividualCurrentCardAddDto>
+    public class ForeignIndividualCurrentCardUpdateDtoValidator : AbstractValidator<ForeignIndividualCurrentCardUpdateDto>
     {
-        public ForeignIndividualCurrentCardAddDtoValidator()
+        public ForeignIndividualCurrentCardUpdateDtoValidator()
         {
+            RuleFor(p => p.Id).NotEmpty();
+
             RuleFor(p => p.IndividualCurrentCardId).NotEmpty();
 
             RuleFor(p => p.IdentityNumber).NotEmpty();
             RuleFor(p => p.IdentityNumber).MinimumLength(2);
             RuleFor(p => p.IdentityNumber).MaximumLength(50);
-
         }
     }
 }

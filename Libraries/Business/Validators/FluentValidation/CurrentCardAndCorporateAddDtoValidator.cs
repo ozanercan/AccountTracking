@@ -1,7 +1,7 @@
 ﻿using Entities.Dtos;
 using FluentValidation;
 
-namespace Business.Validators
+namespace Business.Validators.FluentValidation
 {
     public class CurrentCardAndCorporateAddDtoValidator : AbstractValidator<CurrentCardAndCorporateAddDto>
     {

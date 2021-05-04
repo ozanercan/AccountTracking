@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.Constants;
-using Business.Validators;
+using Business.Validators.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -10,7 +10,6 @@ using Entities.Concrete;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Business.Concrete

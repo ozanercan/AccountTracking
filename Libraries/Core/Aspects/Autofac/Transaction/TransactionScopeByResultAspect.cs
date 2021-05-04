@@ -10,36 +10,37 @@ namespace Core.Aspects.Autofac.Transaction
     /// IResult/Task<IResult> dönen methotlarda Success durumunu kontrol edip Transaction işlemini tamamlar.
     /// IResult.Success false dönerse tüm yapılan işlemleri geri alır.
     /// </summary>
+    /// 
     public class TransactionScopeByResultAspect : MethodInterception
     {
-        protected override void OnAfter(IInvocation invocation)
+        public async override void Intercept(IInvocation invocation)
         {
             using (TransactionScope transactionScope = new TransactionScope())
             {
-                invocation.Proceed();
-                var returnType = invocation.ReturnValue;
-                var type = invocation.ReturnValue.GetType();
-                if (returnType is IResult result)
+                try
                 {
-                    if (result.Success)
+                    invocation.Proceed();
+                    var returnType = invocation.ReturnValue;
+                    var type = invocation.ReturnValue.GetType();
+                    if (returnType is IResult result)
                     {
-                        transactionScope.Complete();
+                        if (result.Success)
+                            transactionScope.Complete();
+                        else
+                            transactionScope.Dispose();
                     }
-                    else
+                    else if (returnType is Task<IResult> taskedResult)
                     {
-                        transactionScope.Dispose();
+                        var response = await taskedResult;
+                        if (response.Success)
+                            transactionScope.Complete();
+                        else
+                            transactionScope.Dispose();
                     }
                 }
-                else if(returnType is Task<IResult> taskedResult)
+                catch (System.Exception e)
                 {
-                    if (taskedResult.Result.Success)
-                    {
-                        transactionScope.Complete();
-                    }
-                    else
-                    {
-                        transactionScope.Dispose();
-                    }
+                    transactionScope.Dispose();
                 }
             }
         }
