@@ -1,14 +1,14 @@
-﻿using Core.Entities.Concrete;
+﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess.Concrete.EntityFramework.Configurations
 {
-    public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationClaim>
+    public class InstallmentStatuConfiguration : IEntityTypeConfiguration<InstallmentStatu>
     {
-        public void Configure(EntityTypeBuilder<OperationClaim> builder)
+        public void Configure(EntityTypeBuilder<InstallmentStatu> builder)
         {
-            builder.ToTable("OperationClaims");
+            builder.ToTable("InstallmentStatus");
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Name).IsRequired().HasMaxLength(100);

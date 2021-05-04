@@ -12,6 +12,7 @@ namespace Entities.Concrete
     {
         public Guid Id { get; set; }
         public Guid IndividualCurrentCardId { get; set; }
-        public string IdentityNumber { get; set; }
+        public Guid NationalityId { get; set; }
+        public string PassportIdentityNumber { get; set; }
     }
 }

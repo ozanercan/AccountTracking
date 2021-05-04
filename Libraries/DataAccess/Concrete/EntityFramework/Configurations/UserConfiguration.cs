@@ -11,9 +11,13 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.ToTable("Users");
             builder.HasKey(p => p.Id);
 
+            builder.Property(p => p.FirstName).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.LastName).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.Degree).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Email).IsRequired().HasMaxLength(100);
             builder.Property(p => p.PasswordHash).IsRequired();
             builder.Property(p => p.PasswordSalt).IsRequired();
+            builder.Property(p => p.CanUseSystem).IsRequired();
         }
     }
 }
