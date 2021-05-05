@@ -23,7 +23,7 @@ namespace Business.Abstract
         /// <summary>
         /// Bireysel oluşturur.
         /// </summary>
-        public Task<IResult> AddAsync(IndividualCurrentCardAddDto individualCurrentCardAddDto);
+        public Task<IDataResult<IndividualCurrentCard>> AddAsync(IndividualCurrentCardAddDto individualCurrentCardAddDto);
 
         /// <summary>
         /// Bireyseli siler.

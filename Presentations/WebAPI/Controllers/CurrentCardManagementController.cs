@@ -35,5 +35,25 @@ namespace WebAPI.Controllers
 
             return Ok(addResult);
         }
+
+        [HttpPost("AddLocalIndividual")]
+        public async Task<IActionResult> AddLocalIndividualAsync(CurrentCardAndLocalIndividualAddDto currentCardAndLocalIndividualAddDto)
+        {
+            var addResult = await _currentCardManagementService.AddLocalIndividualAsync(currentCardAndLocalIndividualAddDto);
+            if (!addResult.Success)
+                return BadRequest(addResult);
+
+            return Ok(addResult);
+        }
+
+        [HttpPost("AddForeignIndividual")]
+        public async Task<IActionResult> AddLocalIndividualAsync(CurrentCardAndForeignIndividualAddDto currentCardAndForeignIndividualAddDto)
+        {
+            var addResult = await _currentCardManagementService.AddForeignIndividualAsync(currentCardAndForeignIndividualAddDto);
+            if (!addResult.Success)
+                return BadRequest(addResult);
+
+            return Ok(addResult);
+        }
     }
 }

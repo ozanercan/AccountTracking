@@ -12,9 +12,9 @@ namespace Business.Validators.FluentValidation
         {
             RuleFor(p => p.IndividualCurrentCardId).NotEmpty();
 
-            RuleFor(p => p.IdentityNumber).NotEmpty();
-            RuleFor(p => p.IdentityNumber).MinimumLength(2);
-            RuleFor(p => p.IdentityNumber).MaximumLength(50);
+            RuleFor(p => p.PassportIdentityNumber).NotEmpty();
+            RuleFor(p => p.PassportIdentityNumber).MinimumLength(2);
+            RuleFor(p => p.PassportIdentityNumber).MaximumLength(50);
 
         }
     }

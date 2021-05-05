@@ -7,8 +7,8 @@ namespace Business.Validators.FluentValidation
     {
         public CurrentCardAndCorporateAddDtoValidator()
         {
-            RuleFor(p => p.CorporateCurrentCardAddDto).NotNull();
             RuleFor(p => p.CurrentCardAddDto).NotNull();
+            RuleFor(p => p.CorporateCurrentCardAddDto).NotNull();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Entities.Dtos
 /// </summary>
     public class IndividualCurrentCardAddDto : IDto
     {
+        public Guid CurrentCardId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

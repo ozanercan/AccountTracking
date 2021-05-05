@@ -9,7 +9,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("Server=localhost; Database=AccountTracking; Port=63047; Uid=root; Pwd=;");
+            optionsBuilder.UseMySQL("Server=localhost; Database=AccountTracking; Port=49900; Uid=root; Pwd=07mekan07;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
