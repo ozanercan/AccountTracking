@@ -5,7 +5,8 @@ using DataAccess.Concrete.EntityFramework.Contexts;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EntityRepositoryBase<User, AccountTrackingContext>, IUserDal
+    public class EfUserOperationClaimDal : EntityRepositoryBase<UserOperationClaim, AccountTrackingContext>, IUserOperationClaimDal
     {
+        
     }
 }

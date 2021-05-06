@@ -1,11 +1,9 @@
 ﻿using Core.Entities.Abstract;
-using System;
 
-namespace Core.Entities.Concrete
+namespace Entities.Dtos
 {
-    public class OperationClaim : IEntity
+    public class OperationClaimAddDto : IDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsDefault { get; set; }
     }

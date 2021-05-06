@@ -92,5 +92,21 @@ namespace Business.Constants
         public static string CurrentCardFoundById = "Cari kart getirildi.";
         public static string CurrentCardNotUpdated = "Cari kart güncellenemedi.";
         public static string CurrentCardUpdated = "Cari kart güncellendi.";
+        internal static string PasswordsDoNotMatch = "Şifreler eşleşmedi.";
+        internal static string PasswordsMatched = "Şifreler eşleşti.";
+        internal static string UserOperationClaimNotAdded = "Kullanıcı Yetkisi kayıt edilemedi.";
+        internal static string UserOperationClaimAdded = "Kullanıcı Yetkisi kayıt edildi.";
+        internal static string OperationClaimAdded = "Yetki kayıt edildi.";
+        internal static string OperationClaimNotAdded = "Yetki kayıt edilemedi.";
+        internal static string DefaultOperationClaimNotFound = "Varsayılan Yetki bulunamadı.";
+        internal static string DefaultOperationClaimListed = "Varsayılan Yetki listelendi.";
+        internal static string OperationClaimDefaultValueAlreadyExist = "Sistemde kayıtlı Varsayılan bir Yetki zaten var.";
+        internal static string OperationClaimDefaultValueNotFound = "Varsayılan bir Yetki bulunamadı.";
+        internal static string OperationClaimNameNotFound = "Yetki Adı bulunamadı.";
+        public static string OperationClaimNameAlreadyExist = "Yetki Adı zaten kayıtlı.";
+        internal static string UserOperationClaimAlreadyUsedByUser = "Yetki Kullanıcıda zaten var.";
+        internal static string UserOperationClaimNotFoundByUser = "Yetki Kullanıcıda yok.";
+        internal static string UserEmailAlreadyUsed = "Kullanıcı Mail Adresi zaten kayıtlı.";
+        internal static string UserEmailNotExist = "Kullanıcı Mail Adresi bulunamadı.";
     }
 }

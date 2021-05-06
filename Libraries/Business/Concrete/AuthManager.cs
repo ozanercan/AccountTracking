@@ -1,6 +1,9 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Transaction;
 using Core.Entities.Concrete;
+using Core.Utilities.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.Hashing;
@@ -12,30 +15,41 @@ namespace Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IUserService _userService;
-        private ITokenHelper _tokenHelper;
-
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        IUserService _userService;
+        ITokenHelper _tokenHelper;
+        IOperationClaimService _operationClaimService;
+        IUserOperationClaimService _userOperationClaimService;
+        IMapper _mapper;
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, IMapper mapper, IOperationClaimService operationClaimService, IUserOperationClaimService userOperationClaimService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _mapper = mapper;
+            _operationClaimService = operationClaimService;
+            _userOperationClaimService = userOperationClaimService;
         }
 
         public async Task<IDataResult<User>> RegisterAsync(UserRegisterDto userRegisterDto)
         {
+            var ruleResult = BusinessRules.Run(this.CheckIfPasswordsMatch(userRegisterDto.Password, userRegisterDto.PasswordAgain));
+            if (!ruleResult.Success)
+                return new ErrorDataResult<User>(null, ruleResult.Message);
+
             HashingHelper.CreatePasswordHash(userRegisterDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
-            var user = new User()
-            {
-                Id = userRegisterDto.EmployeeId,
-                Email = userRegisterDto.Email,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-            };
-            var addResult = await _userService.AddAsync(user);
+
+            var userToAdd = _mapper.Map<User>(userRegisterDto);
+            userToAdd.PasswordHash = passwordHash;
+            userToAdd.PasswordSalt = passwordSalt;
+
+            var addResult = await _userService.AddAsync(userToAdd);
             if (!addResult.Success)
                 return new ErrorDataResult<User>(null, addResult.Message);
 
-            return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            var addDefaultClaimResult = await AddDefaultClaimToUser(userToAdd);
+            if (!addDefaultClaimResult.Success)
+                return new ErrorDataResult<User>(null, addDefaultClaimResult.Message);
+
+            return new SuccessDataResult<User>(userToAdd, Messages.UserRegistered);
         }
 
         public async Task<IDataResult<User>> LoginAsync(UserLoginDto userForLoginDto)
@@ -52,12 +66,39 @@ namespace Business.Concrete
 
         public async Task<IDataResult<AccessToken>> CreateAccessTokenAsync(User user)
         {
-            var claimsResult = await _userService.GetClaimsAsync(user);
+            var claimsResult = await _operationClaimService.GetClaimsAsync(user);
             if (!claimsResult.Success)
                 return new ErrorDataResult<AccessToken>(null, claimsResult.Message);
 
             var accessToken = _tokenHelper.CreateToken(user, claimsResult.Data);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+        }
+
+        private async Task<IResult> AddDefaultClaimToUser(User user)
+        {
+            var defaultClaimResult = await _operationClaimService.GetDefaultClaimAsync();
+            if (!defaultClaimResult.Success)
+                return defaultClaimResult;
+
+            UserOperationClaimAddDto userOperationClaim = new UserOperationClaimAddDto()
+            {
+                OperationClaimId = defaultClaimResult.Data.Id,
+                UserId = user.Id
+            };
+
+            var addResult = await _userOperationClaimService.AddAsync(userOperationClaim);
+            if (!addResult.Success)
+                return new ErrorResult(Messages.UserOperationClaimNotAdded);
+
+            return new SuccessResult(Messages.UserOperationClaimAdded);
+        }
+
+        private IResult CheckIfPasswordsMatch(string password1, string password2)
+        {
+            if (!password1.Equals(password2))
+                return new ErrorResult(Messages.PasswordsDoNotMatch);
+
+            return new SuccessResult(Messages.PasswordsMatched);
         }
     }
 }

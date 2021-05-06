@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserMainPageComponent } from './pages/user-main-page/user-main-page.component';
 import { FeatureCardComponent } from './components/feature-card/feature-card.component';
+import { UserCreatePageComponent } from './pages/user-create-page/user-create-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FeatureCardComponent } from './components/feature-card/feature-card.com
     LoginPageComponent,
     SidebarComponent,
     UserMainPageComponent,
-    FeatureCardComponent
+    FeatureCardComponent,
+    UserCreatePageComponent
   ],
   imports: [
     BrowserModule,

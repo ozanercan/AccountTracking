@@ -5,6 +5,7 @@ using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System.Reflection;
@@ -16,9 +17,17 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+
+            builder.RegisterType<EfUserOperationClaimDal>().As<IUserOperationClaimDal>();
+            builder.RegisterType<UserOperationClaimManager>().As<IUserOperationClaimService>();
+
+            builder.RegisterType<EfOperationClaimDal>().As<IOperationClaimDal>();
+            builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>();
+
             builder.RegisterType<EfUserDal>().As<IUserDal>();
             builder.RegisterType<UserManager>().As<IUserService>();
-            builder.RegisterType<AuthManager>().As<IAuthService>();
 
             builder.RegisterType<EfCurrencyUnitDal>().As<ICurrencyUnitDal>();
             builder.RegisterType<CurrencyUnitManager>().As<ICurrencyUnitService>();
