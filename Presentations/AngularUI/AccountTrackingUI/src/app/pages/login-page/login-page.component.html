@@ -1,32 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 mx-auto">
-            <form class="border-1 border-primary" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="mb-3">
-                    <label for="login_Email" class="form-control-plaintext">E-Posta Adresi *</label>
-                    <input id="login_Email" type="email" class="form-control" formControlName="email">
-                    <div *ngIf="getEmail.touched && getEmail.invalid" class="text-danger">
-                        <div *ngIf="getEmail.errors?.required">Bu alan gereklidir.</div>
-                        <div *ngIf="getEmail.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
-                        <div *ngIf="getEmail.errors?.email">Bu alan E-Posta formatında olmalıdır.</div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="login_Password" class="form-control-plaintext">Şifre *</label>
-                    <input id="login_Password" type="password" class="form-control" formControlName="password">
-                    <div *ngIf="getPassword.touched && getPassword.invalid" class="text-danger">
-                        <div *ngIf="getPassword.errors?.required">Bu alan gereklidir.</div>
-                        <div *ngIf="getPassword.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <button class="btn"><span>Beni Hatırla <input type="checkbox"></span></button>
-                    <span class="float-end"><button class="btn">Şifremi Unuttum</button></span>
-                </div>
-                <div class="text-center">
-                    <button id="userLoginButton" class="btn btn-success w-50" [disabled]="loginForm.invalid">Giriş Yap</button>
-                </div>
-            </form>
+            <div style="margin-top: 25%;">
+                <app-user-login></app-user-login>
+            </div>
         </div>
     </div>
 </div>

@@ -1,30 +1,39 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { timer } from 'rxjs';
+import { Messages } from 'src/app/constants/messages';
+import { Settings } from 'src/app/constants/settings';
 import { UserLogin } from 'src/app/models/userLogin';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpErrorCatchService } from 'src/app/services/http-error-catch.service';
 import { TitleService } from 'src/app/services/title.service';
 import { TokenService } from 'src/app/services/token.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-user-create-page',
-  templateUrl: './user-create-page.component.html',
-  styleUrls: ['./user-create-page.component.css'],
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.css'],
 })
-export class UserCreatePageComponent implements OnInit {
+export class UserLoginComponent implements OnInit {
   constructor(
     private titleService: TitleService,
     private formBuilder: FormBuilder,
-    private userService: UserService,
     private authService: AuthService,
-    private tokenService:TokenService
+    private tokenService: TokenService,
+    private toastrService: ToastrService,
+    private router: Router,
+    private httpErrorCatchService: HttpErrorCatchService
   ) {}
 
   ngOnInit(): void {
-    this.titleService.set('Yeni Kullanıcı Oluştur');
+    this.titleService.set('Giriş Yap');
 
     this.createLoginForm();
   }
+
   loginForm!: FormGroup;
 
   loginProcessContinuing: boolean = false;
@@ -54,9 +63,17 @@ export class UserCreatePageComponent implements OnInit {
       this.authService.login(loginModel).subscribe(
         (response) => {
           this.tokenService.save(response.data.accessToken);
+          this.toastrService.success(Messages.loginSuccessfully);
+          this.toastrService.info(Messages.redirectToUserMainPage);
+
+          timer(Settings.redirectUserPageSecond * 1000).subscribe((p) =>
+            this.router.navigateByUrl('/user/home')
+          );
         },
-        (error) => {
+        (error: HttpErrorResponse) => {
           this.loginProcessContinuing = false;
+          this.httpErrorCatchService.getMessage(error);
+
         },
         () => {
           this.loginProcessContinuing = false;

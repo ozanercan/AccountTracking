@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserMainPageComponent } from './pages/user-main-page/user-main-page.component';
 import { FeatureCardComponent } from './components/feature-card/feature-card.component';
 import { UserCreatePageComponent } from './pages/user-create-page/user-create-page.component';
+import { UrlIncluderInterceptor } from './interceptors/url-includer.interceptor';
+import { AuthorizationIncluderInterceptor } from './interceptors/authorization-includer.interceptor';
+import { LoginGuard } from './guards/login.guard';
+import { UserComponent } from './components/user/user.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { UserCreatePageComponent } from './pages/user-create-page/user-create-pa
     SidebarComponent,
     UserMainPageComponent,
     FeatureCardComponent,
-    UserCreatePageComponent
+    UserCreatePageComponent,
+    UserComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +37,21 @@ import { UserCreatePageComponent } from './pages/user-create-page/user-create-pa
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlIncluderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationIncluderInterceptor,
+      multi: true,
+    },
+    LoginGuard
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

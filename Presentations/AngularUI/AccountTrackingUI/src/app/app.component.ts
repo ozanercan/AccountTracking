@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'AccountTrackingUI';
+
+  constructor(){}
 
   ngOnInit(): void {
-    if (document.URL.indexOf('user/') != -1) {
-      this.onTheUserPage = true;
-    }
+  
   }
-
-  onTheUserPage: boolean = false;
 }
