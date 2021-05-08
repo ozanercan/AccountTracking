@@ -9,25 +9,27 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { UserMainPageComponent } from './pages/user-main-page/user-main-page.component';
+import { ManagementMainPageComponent } from './pages/management-main-page/management-main-page.component';
 import { FeatureCardComponent } from './components/feature-card/feature-card.component';
 import { UserCreatePageComponent } from './pages/user-create-page/user-create-page.component';
 import { UrlIncluderInterceptor } from './interceptors/url-includer.interceptor';
 import { AuthorizationIncluderInterceptor } from './interceptors/authorization-includer.interceptor';
 import { LoginGuard } from './guards/login.guard';
-import { UserComponent } from './components/user/user.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
+import { ManagementComponent } from './components/management/management.component';
+import { UserCreateComponent } from './components/user-create/user-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SidebarComponent,
-    UserMainPageComponent,
     FeatureCardComponent,
     UserCreatePageComponent,
-    UserComponent,
     UserLoginComponent,
+    ManagementComponent,
+    ManagementMainPageComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

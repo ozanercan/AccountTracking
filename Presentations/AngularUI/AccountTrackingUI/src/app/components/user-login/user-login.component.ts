@@ -8,7 +8,7 @@ import { Messages } from 'src/app/constants/messages';
 import { Settings } from 'src/app/constants/settings';
 import { UserLogin } from 'src/app/models/userLogin';
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpErrorCatchService } from 'src/app/services/http-error-catch.service';
+import { HttpMessageCatchService } from 'src/app/services/http-message-catch.service';
 import { TitleService } from 'src/app/services/title.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -25,7 +25,7 @@ export class UserLoginComponent implements OnInit {
     private tokenService: TokenService,
     private toastrService: ToastrService,
     private router: Router,
-    private httpErrorCatchService: HttpErrorCatchService
+    private httpMessageCatchService: HttpMessageCatchService
   ) {}
 
   ngOnInit(): void {
@@ -63,16 +63,18 @@ export class UserLoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(
         (response) => {
           this.tokenService.save(response.data.accessToken);
+          
           this.toastrService.success(Messages.loginSuccessfully);
+
           this.toastrService.info(Messages.redirectToUserMainPage);
 
           timer(Settings.redirectUserPageSecond * 1000).subscribe((p) =>
-            this.router.navigateByUrl('/user/home')
+            this.router.navigateByUrl('management/home')
           );
         },
         (error: HttpErrorResponse) => {
           this.loginProcessContinuing = false;
-          this.httpErrorCatchService.getMessage(error);
+          this.httpMessageCatchService.showErrorMessage(error);
 
         },
         () => {

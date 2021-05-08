@@ -1,0 +1,67 @@
+<form class="border-1 border-primary" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_FirstName" class="form-control-plaintext">İsim *</label>
+            <input id="register_FirstName" type="text" class="form-control" formControlName="firstName">
+            <div *ngIf="getFirstName.touched && getFirstName.invalid" class="text-danger">
+                <div *ngIf="getFirstName.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getFirstName.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_LastName" class="form-control-plaintext">Soyisim *</label>
+            <input id="register_LastName" type="text" class="form-control" formControlName="lastName">
+            <div *ngIf="getLastName.touched && getLastName.invalid" class="text-danger">
+                <div *ngIf="getLastName.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getLastName.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_Degree" class="form-control-plaintext">Ünvan *</label>
+            <input id="register_Degree" type="text" class="form-control" formControlName="degree">
+            <div *ngIf="getDegree.touched && getDegree.invalid" class="text-danger">
+                <div *ngIf="getDegree.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getDegree.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_Email" class="form-control-plaintext">E-Posta Adresi *</label>
+            <input id="register_Email" type="email" class="form-control" formControlName="email">
+            <div *ngIf="getEmail.touched && getEmail.invalid" class="text-danger">
+                <div *ngIf="getEmail.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getEmail.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+                <div *ngIf="getEmail.errors?.email">Bu alan E-Posta formatında olmalıdır.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_Password" class="form-control-plaintext">Şifre *</label>
+            <input id="register_Password" type="password" class="form-control" formControlName="password">
+            <div *ngIf="getPassword.touched && getPassword.invalid" class="text-danger">
+                <div *ngIf="getPassword.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getPassword.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_PasswordAgain" class="form-control-plaintext">Şifre Tekrarı *</label>
+            <input id="register_PasswordAgain" type="password" class="form-control" formControlName="passwordAgain">
+            <div *ngIf="getPasswordAgain.touched && getPasswordAgain.invalid" class="text-danger">
+                <div *ngIf="getPasswordAgain.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getPasswordAgain.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <label for="register_CanUseSystem" class="form-control-plaintext">Sistemi Kullanma Durumu *</label>
+            <select class="form-control" formControlName="canUseSystem">
+                <option [ngValue]="true">Sistemi Kullanabilir</option>
+                <option [ngValue]="false">Sistemi Kullanamaz</option>
+            </select>
+            <div *ngIf="getCanUseSystem.touched && getCanUseSystem.invalid" class="text-danger">
+                <div *ngIf="getCanUseSystem.errors?.required">Bu alan gereklidir.</div>
+                <div *ngIf="getCanUseSystem.errors?.minlength">Daha fazla karakter girmelisiniz.</div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button id="userLoginButton" class="btn btn-success w-50" [disabled]="registerForm.invalid">Kayıt Et</button>
+        </div>
+    </div>
+</form>

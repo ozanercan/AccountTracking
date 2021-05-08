@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'src/app/services/title.service';
 
 @Component({
-  selector: 'app-user-main-page',
-  templateUrl: './user-main-page.component.html',
-  styleUrls: ['./user-main-page.component.css'],
+  selector: 'app-management-main-page',
+  templateUrl: './management-main-page.component.html',
+  styleUrls: ['./management-main-page.component.css'],
 })
-export class UserMainPageComponent implements OnInit {
+export class ManagementMainPageComponent implements OnInit {
   constructor(private titleService: TitleService) {}
 
   ngOnInit(): void {

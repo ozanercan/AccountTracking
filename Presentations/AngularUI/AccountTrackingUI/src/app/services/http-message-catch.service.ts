@@ -6,13 +6,17 @@ import { Result } from '../models/Results/result';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpErrorCatchService {
+export class HttpMessageCatchService {
   constructor(private toastrService: ToastrService) {}
 
-  getMessage(errorResponse: HttpErrorResponse) {
-    if(errorResponse.error != null){
+  showErrorMessage(errorResponse: HttpErrorResponse) {
+    if (errorResponse.error != null) {
       let x = errorResponse.error as Result;
       this.toastrService.error(x.message);
     }
+  }
+
+  showSuccessMessage(response: Result) {
+    this.toastrService.success(response.message);
   }
 }
