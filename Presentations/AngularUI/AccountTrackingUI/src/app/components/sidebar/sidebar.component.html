@@ -82,10 +82,10 @@
         </a>
         <div class="collapse" id="userCollapse">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Listele</li>
-                <li class="list-group-item">Ekle</li>
-                <li class="list-group-item">Sil</li>
-                <li class="list-group-item">Güncelle</li>
+                <li class="list-group-item" [routerLink]="'user/list'" [routerLinkActive]="'active'">Listele</li>
+                <li class="list-group-item" [routerLink]="'user/create'" [routerLinkActive]="'active'">Ekle</li>
+                <li class="list-group-item" [routerLinkActive]="'active'">Sil</li>
+                <li class="list-group-item" [routerLinkActive]="'active'">Güncelle</li>
             </ul>
         </div>
     </div>

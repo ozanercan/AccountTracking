@@ -1,0 +1,24 @@
+<div class="w-100" *ngIf="users == undefined">
+    <app-loading-progress-bar></app-loading-progress-bar>
+</div>
+<table class="table table-responsive table-bordered table-hover" *ngIf="users != undefined">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>E-Posta</th>
+            <th>İsim Soyisim</th>
+            <th>Ünvan</th>
+            <th>Sistemi Kullanma Durumu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.degree}}</td>
+            <td>{{user.canUseSystem | canUseSystem}}</td>
+        </tr>
+    </tbody>
+    <tfoot>Toplam Kayıt: <b>{{users.length}}</b></tfoot>
+</table>

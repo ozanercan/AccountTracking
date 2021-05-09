@@ -80,8 +80,6 @@ export class UserCreateComponent implements OnInit {
       let registerModel: UserRegister = this.registerForm.value;
       this.authService.register(registerModel).subscribe(
         (response) => {
-          this.tokenService.save(response.data.accessToken);
-
           this.toastrService.success(Messages.registerSuccessByUser);
         },
         (error: HttpErrorResponse) => {

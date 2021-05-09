@@ -29,11 +29,11 @@ namespace Business.Concrete
             _userOperationClaimService = userOperationClaimService;
         }
 
-        public async Task<IDataResult<User>> RegisterAsync(UserRegisterDto userRegisterDto)
+        public async Task<IResult> RegisterAsync(UserRegisterDto userRegisterDto)
         {
             var ruleResult = BusinessRules.Run(this.CheckIfPasswordsMatch(userRegisterDto.Password, userRegisterDto.PasswordAgain));
             if (!ruleResult.Success)
-                return new ErrorDataResult<User>(null, ruleResult.Message);
+                return new ErrorResult(ruleResult.Message);
 
             HashingHelper.CreatePasswordHash(userRegisterDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
@@ -43,13 +43,13 @@ namespace Business.Concrete
 
             var addResult = await _userService.AddAsync(userToAdd);
             if (!addResult.Success)
-                return new ErrorDataResult<User>(null, addResult.Message);
+                return new ErrorResult(addResult.Message);
 
             var addDefaultClaimResult = await AddDefaultClaimToUser(userToAdd);
             if (!addDefaultClaimResult.Success)
-                return new ErrorDataResult<User>(null, addDefaultClaimResult.Message);
+                return new ErrorResult(addDefaultClaimResult.Message);
 
-            return new SuccessDataResult<User>(userToAdd, Messages.UserRegistered);
+            return new SuccessResult(Messages.UserRegistered);
         }
 
         public async Task<IDataResult<User>> LoginAsync(UserLoginDto userForLoginDto)
@@ -60,6 +60,10 @@ namespace Business.Concrete
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
                 return new ErrorDataResult<User>(null, Messages.PasswordError);
+
+            var rulesResult = BusinessRules.Run(this.CheckCanUseSystem(userToCheck.Data.CanUseSystem));
+            if (!rulesResult.Success)
+                return new ErrorDataResult<User>(null, rulesResult.Message);
 
             return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
         }
@@ -93,12 +97,29 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserOperationClaimAdded);
         }
 
+        /// <summary>
+        /// Girilen şifrelerin aynı olup olmadığını kontrol eder.
+        /// </summary>
+        /// <returns>Şifreler aynısa Success döner.</returns>
         private IResult CheckIfPasswordsMatch(string password1, string password2)
         {
             if (!password1.Equals(password2))
                 return new ErrorResult(Messages.PasswordsDoNotMatch);
 
             return new SuccessResult(Messages.PasswordsMatched);
+        }
+
+        /// <summary>
+        /// Kullanıcının sistemi kullanma izninin olup olmadığını kontrol eder.
+        /// </summary>
+        /// <param name="canUseSystem"></param>
+        /// <returns>Kullanma izni varsa Success döner.</returns>
+        private IResult CheckCanUseSystem(bool canUseSystem)
+        {
+            if (canUseSystem == false)
+                return new ErrorResult(Messages.YouAreNotAllowedToUseSystem);
+
+            return new SuccessResult(Messages.YouAreAllowedToUseSystem);
         }
     }
 }

@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AccessToken } from '../models/accessToken';
 import { LoginResult } from '../models/loginResult';
 import { DataResult } from '../models/Results/dataResult';
+import { Result } from '../models/Results/result';
 import { UserLogin } from '../models/userLogin';
 import { UserRegister } from '../models/userRegister';
 import { TokenService } from './token.service';
@@ -29,7 +30,7 @@ export class AuthService {
   }
 
   register(userRegister: UserRegister) {
-    return this.httpClient.post<DataResult<LoginResult>>(
+    return this.httpClient.post<Result>(
       this.registerPath,
       userRegister
     );

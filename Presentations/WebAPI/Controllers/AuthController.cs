@@ -42,11 +42,7 @@ namespace WebAPI.Controllers
             if (!registerResult.Success)
                 return BadRequest(registerResult);
 
-            var loginResult = await CreateAccessTokenAsync(registerResult.Data);
-            if (!loginResult.Success)
-                return BadRequest(loginResult);
-
-            return Ok(loginResult);
+            return Ok(registerResult);
         }
 
         private async Task<IDataResult<LoginResult>> CreateAccessTokenAsync(User user)

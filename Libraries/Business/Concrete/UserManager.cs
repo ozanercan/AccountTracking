@@ -33,6 +33,15 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
+        public async Task<IDataResult<List<User>>> GetAllAsync()
+        {
+            var users = await _userDal.GetAllNoTrackingAsync();
+            if (users.Count == 0)
+                return new ErrorDataResult<List<User>>(null, Messages.UsersNotFoundInSystem);
+
+            return new SuccessDataResult<List<User>>(users, Messages.UsersListed);
+        }
+
         public async Task<IDataResult<User>> GetByMailAsync(string email)
         {
             var foundUser = await _userDal.GetAsync(u => u.Email == email);

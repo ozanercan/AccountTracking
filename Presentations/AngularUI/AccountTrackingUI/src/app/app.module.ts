@@ -18,6 +18,11 @@ import { LoginGuard } from './guards/login.guard';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { ManagementComponent } from './components/management/management.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserListWithTableComponent } from './components/user-list-with-table/user-list-with-table.component';
+import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
+import { CanUseSystemPipe } from './pipes/can-use-system.pipe';
+import { LoadingProgressBarComponent } from './components/loading-progress-bar/loading-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
     UserLoginComponent,
     ManagementComponent,
     ManagementMainPageComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    HomeComponent,
+    UserListWithTableComponent,
+    UserListPageComponent,
+    CanUseSystemPipe,
+    LoadingProgressBarComponent
   ],
   imports: [
     BrowserModule,

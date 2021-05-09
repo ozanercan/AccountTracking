@@ -9,5 +9,6 @@ namespace Business.Abstract
     {
         Task<IResult> AddAsync(User user);
         Task<IDataResult<User>> GetByMailAsync(string email);
+        Task<IDataResult<List<User>>> GetAllAsync();
     }
 }

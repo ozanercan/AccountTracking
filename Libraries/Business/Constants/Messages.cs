@@ -108,5 +108,9 @@ namespace Business.Constants
         internal static string UserOperationClaimNotFoundByUser = "Yetki Kullanıcıda yok.";
         internal static string UserEmailAlreadyUsed = "Kullanıcı Mail Adresi zaten kayıtlı.";
         internal static string UserEmailNotExist = "Kullanıcı Mail Adresi bulunamadı.";
+        internal static string UsersNotFoundInSystem = "Kullanıcılar sistemde bulunamadı.";
+        internal static string UsersListed = "Kullanıcılar listelendi.";
+        internal static string YouAreNotAllowedToUseSystem = "Sistemi kullanma izniniz yok.";
+        internal static string YouAreAllowedToUseSystem = "Sistemi kullanma izniniz var.";
     }
 }
